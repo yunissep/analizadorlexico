@@ -1,0 +1,131 @@
+using System;
+using System.Windows.Forms;
+
+namespace ANALIZADOR
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        static int x;
+
+        private void Btnanalizar_Click(object sender, EventArgs e)
+        {
+            Principal();
+
+        }
+
+
+
+        public void Principal()
+        {
+            string REntrada = txtcodigo.Text;
+            char[] salto = { '\n' };
+            char[] limitador = { ' ' };
+            string[] RArray = REntrada.Split(salto);
+            for (int i = 0; i < RArray.Length; i++) {
+                string[] palabra = RArray[i].Split(limitador);
+
+                for (int j = 0; j < palabra.Length; j++) {
+                    palabra[j] = palabra[j].Replace("\n", "");
+
+                    if (palabra[j] != "") {
+                        DataGridViewRow row = (DataGridViewRow)dtgtabla.Rows[0].Clone();
+                        row.Cells[0].Value = analizar(palabra[j]);
+                        row.Cells[1].Value = palabra[j];
+                        dtgtabla.Rows.Add(row);
+
+                    }
+                }
+
+            }
+        }
+
+        public string analizar(string conca) {
+
+            string dato = "";
+
+            switch (conca) {
+
+                case "+": dato = "Signo de suma"; break;
+                case "-": dato = "Signo de resta"; break;
+                case "*": dato = "Signo de multiplicar"; break;
+                case "/": dato = "Signo de division"; break;
+                case "=": dato = "Signo de igual"; break;
+                case "<": dato = "Signo de menor que "; break;
+                case ">": dato = "Signo de mayor que"; break;
+                case "$": dato = "Signo de igual comparativo"; break;
+                case "{": dato = "Llave de inicio"; break;
+                case "}": dato = "Llave fin"; break;
+                case "(": dato = "Parentesis de inicio"; break;
+                case ")": dato = "Parentesis de fin"; break;
+                case "YY": dato = "AND"; break;
+                case "OO": dato = "OR"; break;
+                case "XX": dato = "NOT"; break;
+                case "inicio": dato = "P/R de inicio"; break;
+                case "fin": dato = "P/R de fin"; break;
+                case "ente": dato = "P/R de entero"; break;
+                case "cad": dato = "P/R de cadena"; break;
+                case "si": dato = "P/R de condicional si"; break;
+                case "sino": dato = "P/R de condicional sino"; break;
+                case "para": dato = "P/R de ciclo para"; break;
+                case "hacer": dato = "P/R hacer"; break;
+                case "mientras": dato = "P/R de ciclo mientras"; break;
+                case "ver": dato = "P/R de impresion"; break;
+                case "leer": dato = "P/R de leer"; break;
+                case ",": dato = ","; break;
+                case ";": dato = "Fin de la linea"; break;
+                case ".": dato = "."; break;
+                case ":": dato = ":"; break;
+                case "'": dato = "comilla"; break;
+
+                default:
+                    int valor = 0;
+                    int validar = 0;
+                    if (int.TryParse(conca, out valor)) {
+                        dato = "Numero";
+                        validar = 1;
+                    }
+                    if (conca.StartsWith("'") && conca.EndsWith("'")) {
+                        dato = "Texto";
+                        validar = 1;
+                    }
+                    if (validar == 0) {
+                        dato = "identificador";
+                    }
+                    break;
+            }
+            return dato;
+        
+        
+        }
+
+
+        //public void colores()
+        //{
+        //    string pattern = "";
+        //    string[] palabras = ["inicio", "fin", "leer", "ver", "si", "sino", "para", ""]
+        //}
+
+        private void Btnlimpiar_Click(object sender, EventArgs e)
+        {
+            dtgtabla.Rows.Clear();
+            txtcodigo.Text = "";
+            txtcodigo.Focus();
+
+        }
+
+        private void Btnsalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            
+
+        }
+    }

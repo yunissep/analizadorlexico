@@ -1,0 +1,42 @@
+ "+": dato = "Signo de suma";
+ "-": dato = "Signo de resta";
+ "*": dato = "Signo de multiplicar";
+ "/": dato = "Signo de division";
+ "=": dato = "Signo de igual";
+ "<": dato = "Signo de menor que ";
+ ">": dato = "Signo de mayor que";
+ "$": dato = "Signo de igual comparativo"; 
+ "{": dato = "Llave de inicio"; 
+ "}": dato = "Llave fin"; 
+ "(": dato = "Parentesis de inicio"; 
+ ")": dato = "Parentesis de fin"; 
+ "YY": dato = "AND" 
+ "OO": dato = "OR"; 
+ "XX": dato = "NOT"; 
+ "inicio": dato = "P/R de inicio"; 
+ "fin": dato = "P/R de fin"; 
+ "ente": dato = "P/R de entero"; 
+ "cad": dato = "P/R de cadena"; 
+ "si": dato = "P/R de condicional si"; 
+ "sino": dato = "P/R de condicional sino"; 
+ "para": dato = "P/R de ciclo para"; 
+ "hacer": dato = "P/R hacer"; 
+ "mientras": dato = "P/R de ciclo mientras"; 
+ "ver": dato = "P/R de impresion"; 
+ "leer": dato = "P/R de leer"; 
+ ",": dato = ","; 
+ ";": dato = "Fin de la linea"; 
+ ".": dato = "."; 
+ ":": dato = ":"; 
+ "'": dato = "comilla"; 
+ "[0-9]"="numero"
+ " '...' "="texto"
+ "..."="Identificador"
+
+P/R=PALABRA RESERVADA
+
+Se prueba haciendo espacio ' ' ejemplo m = m + 1
+ 
+                  
+                  
+            
